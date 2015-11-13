@@ -5,8 +5,7 @@
 		<meta charset="utf-8">
 		<?php
 			$categories = scandir('cars');
-			unset($categories[0]);
-			unset($categories[1]);
+			unset($categories[0], $categories[1]);
 			if (isset($_POST['category'])){
 				if($_POST['category'] == '*'){
 
@@ -37,7 +36,6 @@
 						<h2><?= $category ?></h2>
 						<?php foreach(glob("cars/".$category."/*.jpg") as $link): ?>
 							<div>
-								<img src="<?= $link ?>" alt="dummy">
 								<?php
 									$dir = "cars/".$category."/";
 									$var = str_replace($dir, '', $link);
@@ -45,8 +43,9 @@
 									$name = str_replace('-', ' ', $rough_name);
 									echo "<h3>".ucwords($name)."</h3>";
 								?>
+								<img src="<?= $link ?>" alt="<?= $rough_name ?>">
 								<label for="<?= $rough_name ?>">Pick this car</label>
-								<input type="radio" name="chosenCar" id="<?= $rough_name ?>" value='{"name" : "<?= $rough_name ?>", "category" : "<?= $category ?>"}'>
+								<input type="radio" name="chosenCar" id="<?= $rough_name ?>" value='<?= $category."|".$rough_name ?>'>
 							</div>							
 						<?php endforeach; ?>
 						<button type="submit">Send</button>
@@ -55,7 +54,6 @@
 					<h2><?= $category ?></h2>
 					<?php foreach(glob("cars/".$category."/*.jpg") as $link): ?>
 						<div>
-							<img src="<?= $link ?>" alt="dummy">
 							<?php
 								$dir = "cars/".$category."/";
 								$var = str_replace($dir, '', $link);
@@ -63,8 +61,9 @@
 								$name = str_replace('-', ' ', $rough_name);
 								echo "<h3>".ucwords($name)."</h3>";
 							?>
+							<img src="<?= $link ?>" alt="<?= $rough_name ?>">
 							<label for="<?= $rough_name ?>">Pick this car</label>
-							<input type="radio" name="chosenCar" id="<?= $rough_name ?>" value='{"name" : "<?= $rough_name ?>", "category" : "<?= $category ?>"}'>
+							<input type="radio" name="chosenCar" id="<?= $rough_name ?>" value='<?= $category."|".$rough_name ?>'>
 						</div>						
 					<?php endforeach; ?>
 					<button type="submit">Send</button>

@@ -76,11 +76,11 @@
 							<?php if($key == $requiredCategory): ?>
 								<div class="row">
 									<h2 class="center"><?= $category ?></h2>
-									<?php foreach(glob("cars\\".$category."\\*.jpg") as $link): ?>
+									<?php foreach(glob("cars/".$category."/*.jpg") as $link): ?>
 										<div class="col m4 s12">
 											<div class="card">
 												<?php
-													$dir = "cars\\".$category."\\";
+													$dir = "cars/".$category."/";
 													$var = str_replace($dir, '', $link);
 													$rough_name = str_replace('.jpg', '', $var);
 													$name = str_replace('-', ' ', $rough_name);
@@ -108,11 +108,11 @@
 						<?php else: ?>
 							<div class="row">
 								<h2 class="center"><?= $category ?></h2>
-								<?php foreach(glob("cars\\".$category."\\*.jpg") as $link): ?>
+								<?php foreach(glob("cars/".$category."/*.jpg") as $link): ?>
 									<div class="col m4 s12">
 										<div class="card">
 											<?php
-												$dir = "cars\\".$category."\\";
+												$dir = "cars/".$category."/";
 												$var = str_replace($dir, '', $link);
 												$rough_name = str_replace('.jpg', '', $var);
 												$name = str_replace('-', ' ', $rough_name);

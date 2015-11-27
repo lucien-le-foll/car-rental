@@ -10,7 +10,7 @@
 		$chosenCar = json_decode($_POST['chosenCar'], true);
 		echo $chosenCar['category'];
 		$name = str_replace('-', ' ', $chosenCar['name']);
-		$link = "cars\\".$chosenCar['category']."\\".$chosenCar['name'].".jpg";
+		$link = "cars/".$chosenCar['category']."/".$chosenCar['name'].".jpg";
 	?>
 	<p>You picked the car :</p>
 	<h3><?= ucwords($name) ?></h3>

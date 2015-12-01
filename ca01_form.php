@@ -4,6 +4,7 @@
 		<title>Car Rental Application</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="css/style.css">
 		<?php
 			$categories = scandir('cars');
 			unset($categories[0], $categories[1]);
@@ -22,7 +23,7 @@
 			<h1>Mootown Rentals</h1>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi eos accusamus nemo doloremque saepe molestiae, voluptas maxime, molestias recusandae eligendi et dolor ullam hic minima repellat optio alias, ratione quisquam!</p>
 		</header>
-		<main>
+		<div id="main">
 			<h2>Filter</h2>
 			<form action="ca01_form.php" method="post">
 				<select name="category" id="category">
@@ -82,7 +83,7 @@
 					<?php endforeach; ?>	
 				</form>
 			</div>
-		</main>
+		</div>
 		<footer>
 			
 		</footer>

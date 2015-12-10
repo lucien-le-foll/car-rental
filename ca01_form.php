@@ -6,7 +6,7 @@
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
 		<link rel="stylesheet" href="css/style.css">
 		<?php
-			$categories = scandir('cars');
+			$categories = scandir('img/cars');
 			unset($categories[0], $categories[1]);
 			if (isset($_POST['category'])){
 				if($_POST['category'] == '*'){
@@ -29,7 +29,7 @@
 				<select name="category" id="category">
 					<option value="*">All categories</option>
 					<?php foreach($categories as $key => $category): ?>
-						<option value='<?= $key ?>'><?= $category ?></option>
+						<option value='<?php echo  $key ?>'><?php echo  $category ?></option>
 					<?php endforeach; ?>		
 				</select>
 				<button type="submit">Filter</button>
@@ -40,19 +40,19 @@
 						<?php if(isset($requiredCategory)): ?>
 							<?php if($key == $requiredCategory): ?>
 								<div class="category">
-									<h2><?= $category ?></h2>
-									<?php foreach(glob("cars/".$category."/*.jpg") as $link): ?>
+									<h2><?php echo  $category ?></h2>
+									<?php foreach(glob("img/cars/".$category."/*.jpg") as $link): ?>
 										<div>
 											<?php
-												$dir = "cars/".$category."/";
+												$dir = "img/cars/".$category."/";
 												$var = str_replace($dir, '', $link);
 												$rough_name = str_replace('.jpg', '', $var);
 												$name = str_replace('-', ' ', $rough_name);
 												echo "<h3>".ucwords($name)."</h3>";
 											?>
-											<img src="<?= $link ?>" alt="<?= $rough_name ?>">
-											<label for="<?= $rough_name ?>">Pick this car</label>
-											<input type="radio" name="chosenCar" id="<?= $rough_name ?>" value='<?= $category."|".$rough_name ?>'>
+											<img src="<?php echo  $link ?>" alt="<?php echo  $rough_name ?>">
+											<label for="<?php echo  $rough_name ?>">Pick this car</label>
+											<input type="radio" name="chosenCar" id="<?php echo  $rough_name ?>" value='<?php echo  $category."|".$rough_name ?>'>
 										</div>							
 									<?php endforeach; ?>
 									<button type="submit">Send</button>
@@ -61,19 +61,19 @@
 							<?php endif; ?>
 						<?php else: ?>
 							<div class="category">
-								<h2><?= $category ?></h2>
-								<?php foreach(glob("cars/".$category."/*.jpg") as $link): ?>
+								<h2><?php echo  $category ?></h2>
+								<?php foreach(glob("img/cars/".$category."/*.jpg") as $link): ?>
 									<div>
 										<?php
-											$dir = "cars/".$category."/";
+											$dir = "img/cars/".$category."/";
 											$var = str_replace($dir, '', $link);
 											$rough_name = str_replace('.jpg', '', $var);
 											$name = str_replace('-', ' ', $rough_name);
 											echo "<h3>".ucwords($name)."</h3>";
 										?>
-										<img src="<?= $link ?>" alt="<?= $rough_name ?>">
-										<label for="<?= $rough_name ?>">Pick this car</label>
-										<input type="radio" name="chosenCar" id="<?= $rough_name ?>" value='<?= $category."|".$rough_name ?>'>
+										<img src="<?php echo  $link ?>" alt="<?php echo  $rough_name ?>">
+										<label for="<?php echo  $rough_name ?>">Pick this car</label>
+										<input type="radio" name="chosenCar" id="<?php echo  $rough_name ?>" value='<?php echo  $category."|".$rough_name ?>'>
 									</div>						
 								<?php endforeach; ?>
 								<button type="submit">Send</button>

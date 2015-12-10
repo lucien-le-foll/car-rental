@@ -1,10 +1,18 @@
 <!DOCTYPE>
 <html>
 	<head>
-		<title>Car Rental Application</title>
+		<title>Mootown Rentals</title>
+
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
-		<link rel="stylesheet" href="css/style.css">
+
+		<link rel="stylesheet" href="css/foundation.css">
+		<link rel="stylesheet" href="css/app.css">
+
+		<script src="js/vendor/jquery.min.js"></script>
+		<script src="js/vendor/what-input.min.js"></script>
+		<script src="js/foundation.min.js"></script>
+		<script src="js/app.js"></script>
 		<?php
 			$categories = scandir('img/cars');
 			unset($categories[0], $categories[1]);

@@ -8,11 +8,6 @@
 
 		<link rel="stylesheet" href="css/foundation.css">
 		<link rel="stylesheet" href="css/app.css">
-
-		<script src="js/vendor/jquery.min.js"></script>
-		<script src="js/vendor/what-input.min.js"></script>
-		<script src="js/foundation.min.js"></script>
-		<script src="js/app.js"></script>
 		<?php
 			$categories = scandir('img/cars');
 			unset($categories[0], $categories[1]);
@@ -27,73 +22,101 @@
 		?>
 	</head>
 	<body>
-		<header>
-			<h1>Mootown Rentals</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi eos accusamus nemo doloremque saepe molestiae, voluptas maxime, molestias recusandae eligendi et dolor ullam hic minima repellat optio alias, ratione quisquam!</p>
-		</header>
-		<div id="main">
-			<h2>Filter</h2>
-			<form action="ca01_form.php" method="post">
-				<select name="category" id="category">
-					<option value="*">All categories</option>
-					<?php foreach($categories as $key => $category): ?>
-						<option value='<?php echo  $key ?>'><?php echo  $category ?></option>
-					<?php endforeach; ?>		
-				</select>
-				<button type="submit">Filter</button>
-			</form>
-			<div class="form">
-				<form action="ca01_result.php" method="post">
-					<?php foreach($categories as $key => $category): ?>
-						<?php if(isset($requiredCategory)): ?>
-							<?php if($key == $requiredCategory): ?>
-								<div class="category">
-									<h2><?php echo  $category ?></h2>
-									<?php foreach(glob("img/cars/".$category."/*.jpg") as $link): ?>
-										<div>
-											<?php
-												$dir = "img/cars/".$category."/";
-												$var = str_replace($dir, '', $link);
-												$rough_name = str_replace('.jpg', '', $var);
-												$name = str_replace('-', ' ', $rough_name);
-												echo "<h3>".ucwords($name)."</h3>";
-											?>
-											<img src="<?php echo  $link ?>" alt="<?php echo  $rough_name ?>">
-											<label for="<?php echo  $rough_name ?>">Pick this car</label>
-											<input type="radio" name="chosenCar" id="<?php echo  $rough_name ?>" value='<?php echo  $category."|".$rough_name ?>'>
-										</div>							
-									<?php endforeach; ?>
-									<button type="submit">Send</button>
-								</div>
-								
-							<?php endif; ?>
-						<?php else: ?>
-							<div class="category">
-								<h2><?php echo  $category ?></h2>
-								<?php foreach(glob("img/cars/".$category."/*.jpg") as $link): ?>
-									<div>
-										<?php
-											$dir = "img/cars/".$category."/";
-											$var = str_replace($dir, '', $link);
-											$rough_name = str_replace('.jpg', '', $var);
-											$name = str_replace('-', ' ', $rough_name);
-											echo "<h3>".ucwords($name)."</h3>";
-										?>
-										<img src="<?php echo  $link ?>" alt="<?php echo  $rough_name ?>">
-										<label for="<?php echo  $rough_name ?>">Pick this car</label>
-										<input type="radio" name="chosenCar" id="<?php echo  $rough_name ?>" value='<?php echo  $category."|".$rough_name ?>'>
-									</div>						
-								<?php endforeach; ?>
-								<button type="submit">Send</button>
-							</div>
-							
-						<?php endif; ?>					
-					<?php endforeach; ?>	
-				</form>
-			</div>
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <ul class="menu">
+                    <li class="menu-text">Mootown Rentals</li>
+                    <li><a href="ca01_form.php"><strong>Step One</strong></a></li>
+                    <li><a href="ca01_form.php">Step Two</a></li>
+                </ul>
+            </div>
+        </div>
+		<div class="row">
+            <div class="columns small-12 medium-8">
+                <h1>Mootown Rentals</h1>
+                <p class="lead">Simple car rental app, feel free to pick a car and hit the 'GO !' button, to rent one of our beautiful cars ! You can also help yourself and sort the cars to suit your needs just right there !</p>
+            </div>
+            <div class="columns small-12 medium-4">
+                <h2>Filter</h2>
+                <form action="ca01_form.php" method="post">
+                    <label>Please choose a category :
+                        <select name="category" id="category">
+                            <option value="*">All</option>
+                            <?php foreach($categories as $key => $category): ?>
+                                <option value='<?php echo  $key ?>'><?php echo  $category ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </label>
+                    <button type="submit" class="button expanded">Filter</button>
+                </form>
+            </div>
+        </div>
+        <div class="row columns">
+            <hr>
+        </div>
+        <div class="row">
+            <form action="ca01_result.php" method="post">
+                <?php foreach($categories as $key => $category): ?>
+                    <?php if(isset($requiredCategory)): ?>
+                        <?php if($key == $requiredCategory): ?>
+                            <div class="row">
+                                <h2 class="text-center"><?php echo  $category ?></h2>
+                                <?php foreach(glob("img/cars/".$category."/*.jpg") as $link): ?>
+                                    <div class="columns small-12 medium-6">
+                                        <?php
+                                            $dir = "img/cars/".$category."/";
+                                            $var = str_replace($dir, '', $link);
+                                            $rough_name = str_replace('.jpg', '', $var);
+                                            $name = str_replace('-', ' ', $rough_name);
+                                            echo "<h3 class='text-center'>".ucwords($name)."</h3>";
+                                        ?>
+                                        <div class="row columns">
+                                            <img src="<?php echo  $link ?>" alt="<?php echo  $rough_name ?>">
+                                        </div>
+                                        <div class="row">
+                                            <div class="columns small-5 small-centered">
+                                                <input type="radio" name="chosenCar" id="<?php echo  $rough_name ?>" value='<?php echo  $category."|".$rough_name ?>'>
+                                                <label for="<?php echo  $rough_name ?>">Pick this car</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                                <button type="submit" class="button expanded success">Send</button>
+                            </div>
+
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <div class="row">
+                            <h2 class="text-center"><?php echo  $category ?></h2>
+                            <?php foreach(glob("img/cars/".$category."/*.jpg") as $link): ?>
+                                <div class="columns small-12 medium-6">
+                                    <?php
+                                    $dir = "img/cars/".$category."/";
+                                    $var = str_replace($dir, '', $link);
+                                    $rough_name = str_replace('.jpg', '', $var);
+                                    $name = str_replace('-', ' ', $rough_name);
+                                    echo "<h3 class='text-center'>".ucwords($name)."</h3>";
+                                    ?>
+                                    <div class="row columns">
+                                        <img src="<?php echo  $link ?>" alt="<?php echo  $rough_name ?>">
+                                    </div>
+                                    <div class="row">
+                                        <div class="columns small-5 small-centered">
+                                            <input type="radio" name="chosenCar" id="<?php echo  $rough_name ?>" value='<?php echo  $category."|".$rough_name ?>'>
+                                            <label for="<?php echo  $rough_name ?>">Pick this car</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                            <button type="submit" class="button expanded success">Go !</button>
+                            <div class="row-columns">
+                                <hr>
+                            </div>
+                        </div>
+
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </form>
 		</div>
-		<footer>
-			
-		</footer>
 	</body>
 </html>

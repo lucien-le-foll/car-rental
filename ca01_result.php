@@ -41,6 +41,5 @@
         <img src="<?php echo $link ?>" alt="<?php echo $name ?>">
         <p class="text-center">A great choice, for great trips !</p>
     </div>
-
 </body>
 </html>

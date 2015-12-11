@@ -1,12 +1,18 @@
-<html>
+<html lang="en">
 <head>
     <title>Mootown Rentals</title>
 
+    <!-- setting the document to display properly on all devices -->
 	<meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 
-	<link rel="stylesheet" href="css/foundation.css">
-	<link rel="stylesheet" href="css/app.css">
+    <!-- CSS -->
+        <!-- getting the needed fonts from a distant server -->
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Open+Sans' rel='stylesheet' type='text/css'>
+        <!-- importing the Foundation CSS -->
+        <link rel="stylesheet" href="css/foundation.min.css">
+        <!-- using custom CSS rules for the app -->
+        <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
 	<div class="top-bar">
